@@ -121,3 +121,53 @@ describe( describeDescription , () => {
 ##### MockedIntegrationServer
 
 > the goal of the MockIntegrationServer is to allow us to mock the routes ,HTTPClient request and other features. We can test with the custom Configuration by       passing configuration as a parameter in MockedIntegrationServer.
+
+
+## Unit Tests
+
+> Unit Testing is a software testing method where individual units/components are tested in isolation.
+
+### 1. Mocking Context 
+
+#### Here is an example of unit test for a simple zode App . ( Using createMockContext )
+
+##### App.ts
+
+```typescript
+import {Context} from "@zode/zode";
+
+export const getPersonName =(ctx: Context) =>{
+    
+  return Promise.resolve(`${ctx.state.query?.person}`);
+  
+}
+```
+> App.ts consists of a function getPersonName which takes Context (zode context) as a parameter and returns the person name passed as a query in route.
+
+Now we will write a unit test to test the function getPersonName by mocking the context (zode Context) using createMockContext.
+
+##### App.test.ts
+
+```typescript
+import { createMockContext } from '@zode/zode'
+
+import { getPersonName } from './App'
+
+const describeDescription = "mocking zode Context"
+describe( describeDescription , () => {
+  test('should be able to test getQueryName fn', async () => {
+    const mockContext = createMockContext({
+      state: {
+        query: { person: 'Ankit' }
+      },
+    })
+    const res = await getQueryName(mockContext);
+    expect(res).toEqual('Ankit')
+  })
+})
+```
+> App.test.ts consists unit test for getPersonName fn .
+
+#### createMockContext
+
+By using createMockContext we can mock any property of Context ( zode Context) by passing its mocked values in the parameters .
