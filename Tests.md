@@ -5,7 +5,7 @@
 ## Integration tests
 > Integration testing is a type of testing meant to check the combinations of different units, their interactions, the way subsystems unite into one common system,   and code compliance with the requirements.
 
-#### Here is an example for integration testing for a simple zode app.
+#### Here is an example for integration testing for a simple zode app.(Without mocking)
 
 ##### App.ts -
 ``` typescript
