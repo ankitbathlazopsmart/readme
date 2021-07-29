@@ -8,7 +8,7 @@
 #### Here is an example for integration testing for a simple zode app.
 
 ##### App.ts -
-``` 
+``` typescript
 import Zode from '@zode/zode';
 
 const app = new Zode();
@@ -22,7 +22,7 @@ export default app.start();
 
 ##### App.test.ts -
 
-```
+```typescript
 import { IntegrationServer} from '@zode/zode';
 
 import app from './App.ts';
